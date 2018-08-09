@@ -18,7 +18,7 @@ import logging
 #def colored(a, b):
 #	return a
 
-rootdir = "/media/flash/music/"
+rootdir = "./stream/static/music/"
 
 class Command(BaseCommand):
 	def handle(self, *args, **options):
