@@ -1,0 +1,6 @@
+{% if settings_lfmuser %}
+You are logged in as {{settings_lfmuser}}.
+{% else %}
+<div id="pane_settings_login">You are not logged in. <a id="pane_settings_login_href" data-ps-url="{{settings_lfmlogin}}">Click here to log in</a>.</div>
+{% endif %}
+<div class="pane_title" style="display: none">Settings</div>

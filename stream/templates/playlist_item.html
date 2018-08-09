@@ -1,0 +1,8 @@
+{% load app_filters %}
+{% for t in tracks %}
+<li value="{{t.id}}" class="playlist_item{% if forloop.first %} first{% endif %}">
+	<span class="path" style="display: none">{{t.path}}</span>
+	<span class="artist">{{t.artist}}</span> - <i><span class="title">{{t.title}}</span></i> (<span class="song_position"></span>{{t.length|to_length}})
+	<span class="remove" style="display: block; float: right">x</span>
+</li>
+{% endfor %}

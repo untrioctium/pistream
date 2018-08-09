@@ -1,0 +1,13 @@
+{% load app_filters %}
+
+<h4>Artists</h4>
+Sort by: <a href="#" class="pane_browse_sort" data-ps-sort="name">Name</a>
+<a href="#" class="pane_browse_sort" data-ps-sort="playcount">Playcount</a>
+<a href="#" class="pane_browse_sort" data-ps-sort="length">Length</a>
+
+<hr/>
+<ul id="pane_browse_list" class="data">
+{% for a in artists %}
+<li data-ps-model="artist" data-ps-id="{{a.id}}" data-ps-ascii="{{a.ascii_name|de_the}}" data-ps-length="{{a.length}}" class="browsable">{{a.name}} ({{a|playcount}} plays)</li>{% endfor %}
+</ul>
+<div class="pane_title" style="display: none">Browse</div>

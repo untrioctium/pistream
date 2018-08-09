@@ -1,0 +1,26 @@
+{% load app_filters %}
+
+<p>
+	<img src="{{image}}" style="float:left; padding: 0px 25px 0px 0px" />
+	{{info_short|safe}}
+	<br/><br/>
+	Tags: {% for t in o.tags.names %}{{t}}{% if not forloop.last %}, {% endif %}{% endfor %}
+</p>
+<hr/>
+{% if children_type %}
+	<h4>{{children_type|capfirst}}s:</h4>
+	<ul class="data">
+		{% for child in children %}
+			<li>
+				<span data-ps-model="{{children_type}}" data-ps-id="{{child.id}}" style="float: left;" class="playable">[&#9655;]</span>
+				<span data-ps-model="{{children_type}}" data-ps-id="{{child.id}}" style="display:block; margin-left:10px " class="browsable">{{forloop.counter}}. {{child.listify}} ({{child.length|to_length}}) ({{child|playcount}} plays)</span>
+			</li>
+		{% endfor %}
+	</ul>
+<hr/>
+{% endif %}
+<h4>Similar {{my_type}}s:</h4>
+{% for s in o.similar %}
+	<img src="{{s|to_image:"medium"}}" title="{{s}}" data-ps-model="{{my_type}}" data-ps-id="{{s.id}}" class="browsable" style="cursor: pointer; padding: 0px 10px 0px 0px" />
+{% endfor %}
+<div class="pane_title" style="display: none">Browse{% for t in tree %} &raquo; {{t}}{% endfor %}</div>

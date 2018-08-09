@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<title>PiStream</title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="static/css/master.css" />
+<link href="static/css/jquery-ui.css" rel="stylesheet">
+<!--[if IE 8]>
+<link rel="stylesheet" href="css/ie8.css" />
+<![endif]-->
+<!--[if !IE]><!-->
+<script src="static/js/iscroll.js"></script>
+<!--<![endif]-->
+<script src="static/js/pace.js"></script>
+<script src="static/js/jquery.js"></script>
+<script src="static/js/jquery-ui.js"></script>
+<script src="static/js/playlist.js"></script>
+<script src="static/js/master.js"></script>
+<script src="static/js/site.js"></script>
+<script src="static/js/api.js"></script>
+<script src="static/js/paneManager.js"></script>
+<script src="static/js/events.js"></script>
+<script src="static/js/ws4redis2.js"></script>
+<script src="static/js/tinysort.js"></script>
+<script src="static/js/jquery.tinysort.js"></script>
+{% for p in panes %}<script src="{{p.js}}"></script>
+{% endfor %}
+</head>
+<body>
+<audio id="player"></audio>
+<div id="main" class="abs">
+	<div class="abs header_upper chrome_dark">
+		<span class="float_left button" id="button_navigation">Navigation</span>
+		<span id="window_title"></span>
+	</div>
+	<div class="abs header_lower chrome_dark">
+		<a id="button_back" href="#" class="float_left button">Back</a>
+		<a href="#" id="button_trackprev" class="button">&laquo;</a>
+		<a href="#" id="button_playpause" class="button">Play</a>
+		<a href="#" id="button_stop" class="button">Stop</a>
+		<a href="#" id="button_tracknext" class="button">&raquo;</a>
+		<a id="button_forward" href="#" class="float_right button">Forward</a>
+	</div>
+	<div id="main_content" class="abs">
+		<div id="main_content_inner">
+			{% for p in panes %}
+				<div id="pane_{{p.name}}" class="content_pane" style="display: none">
+				{% include p.template %}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="abs footer_lower chrome_dark">
+		<div id="pos_slider" class="song_position" style="width: 70%; margin: 0 auto; display:inline-block;"></div>
+	</div>
+</div>
+{% include "sidebar.html" %}
+</body>
+</html>

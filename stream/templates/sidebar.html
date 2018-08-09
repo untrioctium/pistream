@@ -1,0 +1,24 @@
+<div id="sidebar" class="abs">
+	<span id="nav_arrow"></span>
+	<div class="abs header_upper chrome_dark">
+		PiStream
+	</div>
+	<form action="" class="abs header_lower chrome_dark">
+		<input type="search" id="q" name="q" placeholder="Search for music..." />
+	</form>
+	<div id="sidebar_content" class="abs">
+		<div id="sidebar_content_inner">
+			<ul id="sidebar_menu">
+				{% for p in panes %}
+				{% if p.name != "settings" %}
+					<li id="sidebar_{{p.name}}"><a href="#{{p.name}}">{{p.sidebar}}</a></li>
+				{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+	<div class="abs footer_lower chrome_dark">
+		<a id="sidebar_settings" href="#settings" class="icon icon_gear2 float_left"></a>
+		<span class="float_left">Settings</span>
+	</div>
+</div>
